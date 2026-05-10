@@ -1,42 +1,24 @@
-
-/* Индикация сортировки и красоты */
-th {
-    cursor: pointer;
-    position: relative;
-    transition: background 0.3s;
-}
-
-th:hover {
-    background: #1b4332;
-}
-
-th::after {
-    content: ' ↕';
-    font-size: 0.8em;
-    opacity: 0.5;
-}
-
-tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
-tr:hover {
-    background-color: #e9f5ee;
-}
-
-.export-btn {
-    background: #4361ee;
-    margin-bottom: 10px;
-}
-
-.export-btn:hover {
-    background: #3f37c9;
-}
+!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8"><!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор идей для постов</title>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --bg: #f8fafc;
+            --text: #1e293b;
+            --card: #ffffff;
+        }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
             display: flex;
             justify-content: center;
             align-items: center;
@@ -45,53 +27,217 @@ tr:hover {
         }
 
         .container {
-            background-color: var(--card-bg);
-            padding: 2rem;
-            border-radius: 1rem;
+            background: var(--card);
+            padding: 2.5rem;
+            border-radius: 1.5rem;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
             max-width: 500px;
             width: 90%;
+            text-align: center;
         }
 
         h1 {
-            color: var(--primary-color);
-            text-align: center;
+            color: var(--primary);
+            font-size: 2rem;
             margin-bottom: 1.5rem;
-            font-size: 1.8rem;
         }
 
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        li {
+        .idea-box {
             background: #f1f5f9;
-            margin-bottom: 0.75rem;
-            padding: 1rem;
-            border-radius: 0.5rem;
-            border-left: 4px solid var(--primary-color);
-            transition: transform 0.2s;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            border: 2px dashed var(--primary);
+            font-size: 1.1rem;
+            font-weight: 500;
         }
 
-        li:hover {
-            transform: translateX(5px);
-            background: #e2e8f0;
+        .btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s;
+            width: 100%;
         }
 
-        .emoji {
-            margin-right: 10px;
+        .btn:hover {
+            background: #4f46e5;
+            transform: scale(1.02);
+        }
+
+        /* Анимация */
+        .animate {
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
 <body>
+
     <div class="container">
-        <h1>Генератор идей для постов</h1>
-        <ul>
-            <li><span class="emoji">💡</span> 5 идей постов для экспертов</li>
-            <li><span class="emoji">📸</span> 3 идеи сторис</li>
-            <li><span class="emoji">📅</span> Контент-план на неделю</li>
-        </ul>
+        <h1>✨ Идеи для контента</h1>
+        
+        <div class="idea-box" id="result">
+            Нажми на кнопку, чтобы получить идею!
+        </div>
+
+        <button class="btn" onclick="getIdea()">🚀 Сгенерировать идею</button>
     </div>
+
+    <script>
+        const ideas = [
+            "💡 5 идей постов для экспертов: расскажите о своем главном факапе и чему он вас научил.",
+            "📸 3 идеи сторис: покажите свое рабочее место и планы на день.",
+            "📅 Контент-план на неделю: Понедельник - польза, Среда - кейс, Пятница - личное.",
+            "💡 Идея для эксперта: разберите популярный миф в вашей нише.",
+            "📸 Идея сторис: проведите опрос 'Это или То' среди подписчиков.",
+            "💡 Идея для эксперта: пост-знакомство с необычными фактами о вас."
+        ];
+
+        function getIdea() {
+            const box = document.getElementById('result');
+            const randomIdea = ideas[Math.floor(Math.random() * ideas.length)];
+            
+            box.classList.remove('animate');
+            void box.offsetWidth; // Магия для перезапуска анимации
+            
+            box.innerText = randomIdea;
+            box.classList.add('animate');
+        }
+    </script>
 </body>
 </html>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Генератор идей для постов</title>
+    <style>
+        :root {
+            --primary: #6366f1;
+            --bg: #f8fafc;
+            --text: #1e293b;
+            --card: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+
+        .container {
+            background: var(--card);
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .idea-box {
+            background: #f1f5f9;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            border: 2px dashed var(--primary);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 0.75rem;
+            cursor: pointer;
+            transition: transform 0.2s, background 0.2s;
+            width: 100%;
+        }
+
+        .btn:hover {
+            background: #4f46e5;
+            transform: scale(1.02);
+        }
+
+        /* Анимация */
+        .animate {
+            animation: fadeIn 0.4s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>✨ Идеи для контента</h1>
+        
+        <div class="idea-box" id="result">
+            Нажми на кнопку, чтобы получить идею!
+        </div>
+
+        <button class="btn" onclick="getIdea()">🚀 Сгенерировать идею</button>
+    </div>
+
+    <script>
+        const ideas = [
+            "💡 5 идей постов для экспертов: расскажите о своем главном факапе и чему он вас научил.",
+            "📸 3 идеи сторис: покажите свое рабочее место и планы на день.",
+            "📅 Контент-план на неделю: Понедельник - польза, Среда - кейс, Пятница - личное.",
+            "💡 Идея для эксперта: разберите популярный миф в вашей нише.",
+            "📸 Идея сторис: проведите опрос 'Это или То' среди подписчиков.",
+            "💡 Идея для эксперта: пост-знакомство с необычными фактами о вас."
+        ];
+
+        function getIdea() {
+            const box = document.getElementById('result');
+            const randomIdea = ideas[Math.floor(Math.random() * ideas.length)];
+            
+            box.classList.remove('animate');
+            void box.offsetWidth; // Магия для перезапуска анимации
+            
+            box.innerText = randomIdea;
+            box.classList.add('animate');
+        }
+    </script>
+</body>
+</html>
+Почему так произошло (разбор ошибки со скриншота):
+На твоем скрине видно, что браузер воспринял код как обычный текст. Это случается, если:
+
+Файл не имеет расширения .html (проверь, чтобы было index.html, а не index.txt или index.html.txt).
+
+Лишние символы в начале: На скрине в самом верху виден комментарий /* Индикация... */. В HTML-файле стили должны быть строго внутри тега <style>, а не в самом начале файла перед <!DOCTYPE html>.
